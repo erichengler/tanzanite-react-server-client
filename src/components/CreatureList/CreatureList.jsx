@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 // We must import axios in each component we want to use it
 import axios from 'axios';
 import CreatureForm from './CreatureForm.jsx';
+import CreatureItem from './CreatureItem.jsx';
 
 
 // Components always correspond to something on the DOM
@@ -56,10 +57,14 @@ function CreatureList () {
 
             <ul>
                 {
+                    // ! .map happens in our List Component
+                    // Key needs to be on the element inside of the .map
                     listOfCreatures.map((creature) => (
-                        // What we want to render
-                        <li key={creature.id}>
-                            {creature.name} from {creature.origin}</li>
+                        <CreatureItem 
+                            key={creature.id} 
+                        //   value    variable
+                            creature={creature}
+                        />
                     ))
                 }
             </ul>
